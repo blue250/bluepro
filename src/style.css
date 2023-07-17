@@ -1,0 +1,45 @@
+:root {
+  --base-padding:40px 70px
+}
+@media screen and (max-width:992px){
+  :root {
+    --base-padding:20px 20px
+  }
+}
+ul,li{
+  list-style: none;
+}
+.KeepWord{
+  word-break: keep-all;
+}
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-thumb{
+  width: 10px;
+  border-radius: inherit;
+  background-color: rgba(0,0,0,0.2);;
+}
+/* @media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+  font-family: "VF Thin";src: url("../public/fonts/AlimamaFangYuanTiVF-Thin.ttf");
+  font-display: swap;
+}
