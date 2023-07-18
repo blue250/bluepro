@@ -20,6 +20,9 @@ const getters={
   HomeHeight(state:state){
     return '100vh - '+state.Header+'px'
   },
+  MarginTop(state:state){
+    return state.Header
+  }
   // Top(){
   //   return state.Top
   // }

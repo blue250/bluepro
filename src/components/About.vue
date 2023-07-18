@@ -1,7 +1,7 @@
 <template>
   <div class="About" id="about" :style="{'height':'calc('+store.getters.HomeHeight+')'}">
     <div style="text-align: center;width: 200px;margin: 0 auto 0;overflow: hidden;">
-      <img src="/img/dog.jpg" alt="" srcset="" style="width: 200px">
+      <img src="@/assets/img/dog.jpg" alt="" srcset="" style="width: 200px">
     </div>
     <div style="text-align: center;">
       <h1>关于 blue250</h1>
@@ -23,7 +23,7 @@
 <style lang="less">
   .About{
     justify-content: center;
-    background-image: url('/img/background.jpg');
+    background-image: url('@/assets/img/background.jpg');
     background-size: 170%;
     background-position: center;
     .AboutInfo{

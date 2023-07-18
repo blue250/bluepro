@@ -26,6 +26,11 @@ const ShowMenu = () => {
 const CloseMenu = () => {
   ShowMenuC.value = false
 }
+// onMounted(()=>{
+//   console.log(document.getElementsByClassName('Banner')[0].clientHeight,'111');
+  
+//   store.commit('Header', document.getElementsByClassName('Banner')[0].clientHeight)
+// })
 
 </script>
 
@@ -39,7 +44,7 @@ const CloseMenu = () => {
       <li class="linkme" :class="{ active: IsActive('linkme') }" @click="ClickId('linkme', 3)">找我</li>
     </ul>
     <div class="linkSmall">
-      <img src="img/menu.png" alt="" srcset="" style="height: 100%;" @click="ShowMenu" v-show="!ShowMenuC">
+      <img src="@/assets/img/menu.png" alt="" srcset="" style="height: 100%;" @click="ShowMenu" v-show="!ShowMenuC">
       <div class="closeButton" style="height: 100%;" @click="CloseMenu" v-show="ShowMenuC"></div>
       <div style="position: absolute;top: 100%;left:0;display: block;width: 100vw;" v-show="ShowMenuC">
         <ul class="linkS">

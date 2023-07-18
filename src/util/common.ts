@@ -41,7 +41,7 @@ export const throttle = (fn: any, wait = 500, isImmediate = false) => {
     }
   }
 }
-const Stop=(timer:number,top:number,height:number)=>{
+const Stop=(timer:NodeJS.Timer,top:number,height:number)=>{
   clearInterval(timer)
   top = height
   store.commit("Top", top)

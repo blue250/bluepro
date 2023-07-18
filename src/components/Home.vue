@@ -4,15 +4,15 @@ import JsonImg from './JsonImg.vue'
 import HomeText from './HomeText.vue'
   import {useStore} from 'vuex'
   const store=useStore()
-  
+  const pat=new URL('@/assets/lottie/markus2.json',import.meta.url).href
 
 
 </script>
 
 <template>
-  <div class="Home" id="home" :style="{'height':'calc('+store.getters.HomeHeight+')',marginTop:store.state.Header+'px'}">
+  <div class="Home" id="home" :style="{'height':'calc('+store.getters.HomeHeight+')',marginTop:store.getters.MarginTop+'px'}">
     <HomeText class="HomeText"></HomeText>
-    <JsonImg path="/img/markus2.json" class="JsonImg"></JsonImg>
+    <JsonImg :path="pat" class="JsonImg"></JsonImg>
     <div class="container">
     <div class="chevron"></div>
     <div class="chevron"></div>
@@ -103,7 +103,7 @@ import HomeText from './HomeText.vue'
     padding-top: 0;
     padding-bottom: 0;
     box-sizing: content-box;
-    background-image:url('/img/home.svg');
+    background-image:url('@/assets/img/home.svg');
     display: flex;
     .HomeText{
       padding: 60px 0;

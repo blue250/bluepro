@@ -8,15 +8,15 @@
     </div>
     <div>
       <div class="LinkIcon">
-        <a href="mailto:885054824@qq.com"><img src="img/qq.svg" alt="" srcset=""></a>
-        <a href="https://github.com/blue250"><img src="img/github.svg" alt="" srcset=""></a>
+        <a href="mailto:885054824@qq.com"><img src="@/assets/img/qq.svg" alt="" srcset=""></a>
+        <a href="https://github.com/blue250"><img src="@/assets/img/github.svg" alt="" srcset=""></a>
       </div>
       <div style="display: flex;">
         <div style="text-align: center;">
           <h1 class="WhiteB">或扫描微信二维码</h1>
           <h3>请备注来意</h3>
           <div>
-            <img src="img/qrcode.png" style="width: 300px;" alt="" srcset="">
+            <img src="@/assets/img/qrcode.png" style="width: 300px;" alt="" srcset="">
           </div>
         </div>
       </div>
@@ -77,7 +77,7 @@ onMounted(() => {
 <style lang="less">
 #linkme {
   padding: 0 20px;
-  background: url('img/repeat.jpg');
+  background: url('@/assets/img/repeat.jpg');
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
@@ -90,7 +90,7 @@ onMounted(() => {
 
     content: '';
     // background-size: cover;
-    background-image: url(img/font.jpg);
+    background-image: url(@/assets/img/font.jpg);
     background-position: center;
     // background-position: 50% 50%;
     position: absolute;

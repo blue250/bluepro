@@ -2,14 +2,29 @@
 import { useStore } from 'vuex'
 const store = useStore()
 // import HelloWorld from './components/HelloWorld.vue'
-import { onMounted, ref, Ref, reactive,watch } from 'vue'
-import { throttle, debounce, SrcollToA, Origin } from './util/common'
+import { onMounted, ref, Ref, reactive} from 'vue'
+import { throttle, SrcollToA, Origin } from './util/common'
 
 import Banner from './components/Banner.vue'
 import Home from './components/Home.vue'
 import About from './components/About.vue'
 import Pro from './components/Pro.vue'
 import LinkMe from './components/LinkMe.vue'
+const em=reactive(['💦','💤','💥','🕑','🤴'])
+const emV=ref(0)
+let emtimer:NodeJS.Timer;
+const ran=()=>{
+  emtimer=setInterval(()=>{
+    emV.value=Math.floor(Math.random()*5)
+  },300)
+}
+ran()
+let loading=ref(true)
+window.onload=()=>{
+  clearInterval(emtimer)
+  // console.log(111);
+  loading.value=false
+}
 const BannerRef: Ref = ref(null)
 const HomeRef: Ref = ref(null)
 const AboutRef: Ref = ref(null)
@@ -72,7 +87,7 @@ onMounted(() => {
 let ScrollCount = ref(0)//滑动距离
 let Start = ref(0)//移动端开始与结束
 let End = ref(0)
-const PcScroll = (e) => {
+const PcScroll = (e:any) => {
   // pc端
   if (e.wheelDeltaY < 0 && store.state.ScrollPage < IdList.length - 1) {
     store.commit('ScrollPage', store.state.ScrollPage + 1)
@@ -86,7 +101,7 @@ const PcScroll = (e) => {
   ScrollCount.value += e.wheelDeltaY
   console.log(e.wheelDeltaY, ScrollCount.value);
 }//pc与移动端滑动函数
-const PeScroll = (e) => {
+const PeScroll = (e:any) => {
   console.log(1,'1');
   
   e.type == 'touchstart' && (Start.value = e.changedTouches[0].screenY)
@@ -106,7 +121,7 @@ const PeScroll = (e) => {
   }
 }
 // 整屏滚动代码
-const ScrollPage = (e, o) => {
+const ScrollPage = (e:any, o:string) => {
   if (!store.state.FrezzActive) {
     if (store.state.Origin == 'PC' && e.type == 'wheel' && o == 'PC') {
       PcScroll(e)
@@ -126,7 +141,7 @@ const ScrollPage = (e, o) => {
 </script>
 
 <template>
-  <div style="height: 100vh;overflow: hidden;position: relative;">
+  <div style="height: 100vh;overflow: hidden;position: relative;" class="app">
     <div @wheel="ScrollPage($event, 'PC')" @touchend="ScrollPage($event, 'PE')" @touchstart="ScrollPage($event, 'PE')"
       style="position: absolute;transition: all .3s ease-in-out;" :style="{ top: -store.state.Top + 'px' }">
       <Banner ref="BannerRef" @wheel.stop="" @touchmove.stop=""></Banner>
@@ -135,12 +150,49 @@ const ScrollPage = (e, o) => {
       <Pro ref="ProRef"></Pro>
       <LinkMe ref="LinkMeRef"></LinkMe>
     </div>
-
+    <div style="height: 100vh;width: 100%;" class="loading" v-show="loading">
+    Loading...{{ em[emV] }}
+    </div>
   </div>
+
   <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>
 
-<style scoped>
+<style scoped lang="less">
+.app{
+  position: relative;
+}
+.loading{
+  z-index: 3;
+  background: #fffff1;
+  position: absolute;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // font-size: 60px;
+  // background: repeating-linear-gradient(rgb(39, 181, 252),rgb(203, 252, 27));
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
+  // position: relative;
+  // // text-align: center;
+  // overflow: hidden;
+  // transition: all 0.3s;
+//   &::before {
+
+// content: '';
+// // background-size: cover;
+// background: #fffaea;
+// background-position: center;
+// // background-position: 50% 50%;
+// position: absolute;
+// top: 0;
+// left: 0;
+// bottom: 0;
+// right: 0;
+// z-index: -99;
+// }
+}
 .logo {
   height: 6em;
   padding: 1.5em;

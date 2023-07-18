@@ -11,7 +11,7 @@
 
 <script lang="ts" setup>
 import TypeIt from "typeit";
-import { TypeItInstance } from "typeit/types";
+// import { TypeItInstance } from "typeit/types";
 import { onMounted,ref,Ref } from "vue";
 const element:Ref=ref(null)
 const more:Ref=ref(null)
@@ -20,12 +20,12 @@ let VueOut=()=>{}
 let ShowSmall:Ref=ref(false)
 
 onMounted(()=>{
-  const loop=new (TypeIt as TypeItInstance)(element.value, {
+  const loop=new (TypeIt as any)(element.value, {
   speed: 150,
   loop: true,
 }).type('经常玩玩游戏🎮。',{delay:900}).delete(6).type('聊聊技术📔。',{delay:900}).delete(6).type('去远处逛逛🛫。',{delay:900}).move(-7).delete(2).type('偶尔').move(null, { to: "END" }).go();
 
-const hover=new (TypeIt as TypeItInstance)(more.value, {
+const hover=new (TypeIt as any)(more.value, {
   beforeString:()=>{
     loop.freeze()
   },

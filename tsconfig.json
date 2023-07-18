@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -13,6 +17,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
+    "noEmitOnError":false,
+    "noImplicitAny":false,
 
     /* Linting */
     "strict": true,
