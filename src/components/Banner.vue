@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref ,defineExpose } from 'vue'
+import { ref  } from 'vue'
 import { useStore } from 'vuex'
 import { SrcollToA } from '../util/common'
 const store = useStore()
