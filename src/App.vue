@@ -84,6 +84,8 @@ const PcScroll = (e) => {
   console.log(e.wheelDeltaY, ScrollCount.value);
 }//pc与移动端滑动函数
 const PeScroll = (e) => {
+  console.log(1,'1');
+  
   e.type == 'touchstart' && (Start.value = e.changedTouches[0].screenY)
   e.type == 'touchend' && (End.value = e.changedTouches[0].screenY)
   // 移动端
@@ -131,9 +133,9 @@ const test = (e) => {
       <Home ref="HomeRef"></Home>
       <About ref="AboutRef"></About>
       <Pro ref="ProRef"></Pro>
+      <!-- <LinkMe ref="LinkMeRef"></LinkMe> -->
     </div>
 
-    <!-- <LinkMe ref="LinkMeRef"></LinkMe> -->
   </div>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>

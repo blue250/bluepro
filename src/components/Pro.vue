@@ -2,8 +2,8 @@
   <div :style="{'height':'calc('+store.getters.HomeHeight+')'}" id="pro">
     <div class="pro scroll" @wheel.stop="" @touchend.stop="">
       <div v-for="(item,index) in ProList" :key="'pro'+index" class="ProBox" @click="ChosePro(item,index)">
-      <div style="width: 100%;margin-bottom: 20px;border-radius: 5px;overflow: hidden;">
-        <img :src="item.img" alt="" srcset="" style="width: 100%;">
+      <div style="width: 100%;margin-bottom: 20px;border-radius: 5px;overflow: hidden;text-align: center;">
+        <img :src="item.img" alt="" srcset="" style="max-width: 100%;" class="ProImg">
       </div>
       <h3>{{ item.title }}</h3>
       <div class="tag">{{ item.tag }}</div>
@@ -41,9 +41,11 @@ const store=useStore()
 const ProList=reactive([{
   img:'img/apright4.jpg',title:'Apright',info:'亚太及大中华地区领先的企业支出管理应用云服务提供商。基于移动互联，大数据应用，混合云技术，通过费控佳（APright）企业支出管理平台全面解决企业的支出管理问题。',tag:'web 移动端',tags:['Vue','Element','Less','Npm'],detail:{info:'费控佳（APright）北京广赢佳科技有限公司是亚太及大中华地区领先的企业支出管理应用云服务提供商。 我们基于移动互联，大数据应用，混合云技术，通过费控佳（APright）企业支出管理平台全面解决企业的支出管理问题，让我们的客户“增收又增利”。',imgs:['img/apright1.png','img/apright3.jpg']}
 },{
-  img:'img/apright4.jpg',title:'Apright',info:'亚太及大中华地区领先的企业支出管理应用云服务提供商。基于移动互联，大数据应用，混合云技术，通过费控佳（APright）企业支出管理平台全面解决企业的支出管理问题。',tag:'web 移动端',tags:['Vue','Element','Less','Npm'],detail:{info:'费控佳（APright）北京广赢佳科技有限公司是亚太及大中华地区领先的企业支出管理应用云服务提供商。 我们基于移动互联，大数据应用，混合云技术，通过费控佳（APright）企业支出管理平台全面解决企业的支出管理问题，让我们的客户“增收又增利”。',imgs:[]}
+  img:'img/yund1.jpg',title:'云顶之弈编辑/模拟器',info:'一款简单的云顶之弈编辑/模拟器，支持编辑棋子羁绊费用等，可以进行拖拽站位布局。目前还在开发中',tag:'web',tags:['Vue','Express','Mongodb','Less','Ts'],detail:{info:'云顶之弈编辑/模拟器,基础功能包括费用羁绊过滤，拖拽布局，自动统计羁绊信息。还有日志等功能，可以向后台添加修改删除日志(Express与Modgodb)。数据来自Roit官网数据龙。开发中、未上线',imgs:['img/yund1.jpg']}
 },{
-  img:'img/apright4.jpg',title:'Apright',info:'亚太及大中华地区领先的企业支出管理应用云服务提供商。基于移动互联，大数据应用，混合云技术，通过费控佳（APright）企业支出管理平台全面解决企业的支出管理问题。',tag:'web 移动端',tags:['Vue','Element','Less','Npm'],detail:{info:'费控佳（APright）北京广赢佳科技有限公司是亚太及大中华地区领先的企业支出管理应用云服务提供商。 我们基于移动互联，大数据应用，混合云技术，通过费控佳（APright）企业支出管理平台全面解决企业的支出管理问题，让我们的客户“增收又增利”。',imgs:[]}
+  img:'img/ssc1.png',title:'三生菜',info:'提供农村老百姓生活必不可少的生活用品，如米面粮油，生鲜水果，日用品，五金等',tag:'移动端',tags:['Vue','Uniapp','Less'],detail:{info:'智慧电商平台。同时对接本地实体商家和服务性企业，例如药店，超市，五金日杂。已上线。',imgs:['img/ssc1.png']}
+},{
+  img:'img/repeat.png',title:'更多❓',info:'还想查看其他项目？',tag:'❓',tags:['Vue','Uniapp','Less'],detail:{info:'其实我还有大屏与地图项目还有一些其他的web与移动端，但是因为已经很久了，所以没有截图，想了想还是不放出来了。想了解更多项目就问我本人吧。',imgs:['img/repeat.png']}
 }])
 
 let DialogData=reactive({img:'',title:'',info:'',tag:'',tags:[],detail:{info:'',imgs:[]}})
@@ -86,6 +88,9 @@ const DialogClose=($event:boolean)=>{
       padding: 20px;
       &:hover{
         box-shadow: 0 0 #0000, 0 0 #0000, 0 8px 30px #0000001f;
+      }
+      .ProImg{
+        max-height: 210px;
       }
       .tag{
         margin: 20px 0;
