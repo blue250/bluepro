@@ -1,6 +1,6 @@
 <template>
   <div :style="{'height':'calc('+store.getters.HomeHeight+')'}" id="pro">
-    <div class="pro">
+    <div class="pro scroll" @wheel.stop="" @touchend.stop="">
       <div v-for="(item,index) in ProList" :key="'pro'+index" class="ProBox" @click="ChosePro(item,index)">
       <div style="width: 100%;margin-bottom: 20px;border-radius: 5px;overflow: hidden;">
         <img :src="item.img" alt="" srcset="" style="width: 100%;">
@@ -62,7 +62,7 @@ const DialogClose=($event:boolean)=>{
 
 <style lang="less">
   #pro{
-    background: url('/img/repeat.png');
+    background: url('/img/repeat2.jpeg');
     padding: 10px 20px;
     .pro{
       // background: #fff;

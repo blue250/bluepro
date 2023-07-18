@@ -35,7 +35,7 @@ const hover=new (TypeIt as TypeItInstance)(more.value, {
   },
   strings:'其实还会一些<span style="color: #6cf;">nodeexpress</span>与<span style="color: #6cf;">mongodb</span>',
   html:true,
-  speed: 150,
+  speed: 70,
 })
 VueHover=()=>{
   ShowSmall.value=true
