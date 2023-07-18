@@ -36,7 +36,10 @@ const CloseMenu = () => {
 
 <template>
   <div class="Banner">
-    <div style="font-size: 1.5em;"><span style="color: #6cf;">blue</span>250</div>
+    <div style="font-size: 1.5em;display: flex;">
+      <div><img src="@/assets/ico.png" alt="" srcset=""></div>
+      <span style="color: #6cf;">blue</span>250
+    </div>
     <ul class="linkB">
       <li class="home" :class="{ active: IsActive('home') }" @click="ClickId('home', 0)">首页</li>
       <li class="about" :class="{ active: IsActive('about') }" @click="ClickId('about', 1)">关于</li>

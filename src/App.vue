@@ -13,6 +13,7 @@ import LinkMe from './components/LinkMe.vue'
 const em=reactive(['💦','💤','💥','🕑','🤴'])
 const emV=ref(0)
 let emtimer:NodeJS.Timer;
+Origin()
 const ran=()=>{
   emtimer=setInterval(()=>{
     emV.value=Math.floor(Math.random()*5)
@@ -122,6 +123,8 @@ const PeScroll = (e:any) => {
 }
 // 整屏滚动代码
 const ScrollPage = (e:any, o:string) => {
+  console.log(store.state.Origin,o,'o');
+  
   if (!store.state.FrezzActive) {
     if (store.state.Origin == 'PC' && e.type == 'wheel' && o == 'PC') {
       PcScroll(e)
@@ -135,14 +138,17 @@ const ScrollPage = (e:any, o:string) => {
 
 
 }
-
+const test=()=>{
+  console.log(1,'1');
+  
+}
 
 
 </script>
 
 <template>
   <div style="height: 100vh;overflow: hidden;position: relative;" class="app">
-    <div @wheel="ScrollPage($event, 'PC')" @touchend="ScrollPage($event, 'PE')" @touchstart="ScrollPage($event, 'PE')"
+    <div @wheel="ScrollPage($event, 'PC')" @touchend="ScrollPage($event, 'PE')" @touchstart.stop="ScrollPage($event, 'PE')" @mouseover="test"
       style="position: absolute;transition: all .3s ease-in-out;" :style="{ top: -store.state.Top + 'px' }">
       <Banner ref="BannerRef" @wheel.stop="" @touchmove.stop=""></Banner>
       <Home ref="HomeRef"></Home>
@@ -151,7 +157,10 @@ const ScrollPage = (e:any, o:string) => {
       <LinkMe ref="LinkMeRef"></LinkMe>
     </div>
     <div style="height: 100vh;width: 100%;" class="loading" v-show="loading">
-    Loading...{{ em[emV] }}
+      <div>
+        Loading...{{ em[emV] }}
+        <div style="font-size: 20px;">因为没钱💴买好的服务器，所以很卡😥</div>
+      </div>
     </div>
   </div>
 

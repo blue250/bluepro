@@ -25,11 +25,14 @@ onMounted(()=>{
   loop: true,
 }).type('经常玩玩游戏🎮。',{delay:900}).delete(6).type('聊聊技术📔。',{delay:900}).delete(6).type('去远处逛逛🛫。',{delay:900}).move(-7).delete(2).type('偶尔').move(null, { to: "END" }).go();
 
+let NoFrezz=ref(false)
+
 const hover=new (TypeIt as any)(more.value, {
   beforeString:()=>{
     loop.freeze()
   },
   afterComplete:()=>{
+    NoFrezz.value=true
     loop.unfreeze()
     hover.destroy()
   },
@@ -39,7 +42,9 @@ const hover=new (TypeIt as any)(more.value, {
 })
 VueHover=()=>{
   ShowSmall.value=true
-  loop.freeze()
+  if(!NoFrezz.value){
+    loop.freeze()
+  }
   hover.go()
 }
 VueOut=()=>{
