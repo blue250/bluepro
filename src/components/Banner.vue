@@ -36,7 +36,7 @@ const CloseMenu = () => {
       <li class="home" :class="{ active: IsActive('home') }" @click="ClickId('home', 0)">首页</li>
       <li class="about" :class="{ active: IsActive('about') }" @click="ClickId('about', 1)">关于</li>
       <li class="pro" :class="{ active: IsActive('pro') }" @click="ClickId('pro', 2)">项目</li>
-      <li class="link" :class="{ active: IsActive('link') }" @click="ClickId('link', 3)">找我</li>
+      <li class="linkme" :class="{ active: IsActive('linkme') }" @click="ClickId('linkme', 3)">找我</li>
     </ul>
     <div class="linkSmall">
       <img src="img/menu.png" alt="" srcset="" style="height: 100%;" @click="ShowMenu" v-show="!ShowMenuC">
@@ -46,7 +46,7 @@ const CloseMenu = () => {
           <li class="home" :class="{ active: IsActive('home') }" @click="ClickId('home', 0)">首页</li>
           <li class="about" :class="{ active: IsActive('about') }" @click="ClickId('about', 1)">关于</li>
           <li class="pro" :class="{ active: IsActive('pro') }" @click="ClickId('pro', 2)">项目</li>
-          <li class="link" :class="{ active: IsActive('link') }" @click="ClickId('link', 3)">找我</li>
+          <li class="linkme" :class="{ active: IsActive('linkme') }" @click="ClickId('linkme', 3)">找我</li>
         </ul>
       </div>
     </div>

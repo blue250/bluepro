@@ -1,6 +1,7 @@
 <template>
   <div :style="{'height':'calc('+store.getters.HomeHeight+')'}" id="pro">
-    <div class="pro scroll" @wheel.stop="" @touchend.stop="">
+    <div class="pro scroll pro2" @wheel="test" @touchend="test">
+      <!-- <div class="ProBox" style="background: #fff;" v-show="store.state.Origin=='PE'">1</div> -->
       <div v-for="(item,index) in ProList" :key="'pro'+index" class="ProBox" @click="ChosePro(item,index)">
       <div style="width: 100%;margin-bottom: 20px;border-radius: 5px;overflow: hidden;text-align: center;">
         <img :src="item.img" alt="" srcset="" style="max-width: 100%;" class="ProImg">
@@ -51,6 +52,17 @@ const ProList=reactive([{
 let DialogData=reactive({img:'',title:'',info:'',tag:'',tags:[],detail:{info:'',imgs:[]}})
 
 let DialogShow=ref(false)
+
+const test=(e)=>{
+  let a= document.getElementsByClassName('pro2')[0]
+  if(a.scrollTop+a.clientHeight==a.scrollHeight||(a.scrollTop==0)){
+    e.cancelBubble=false
+  }else{
+    e.cancelBubble=true
+  }
+  console.log(a.scrollTop,a.clientHeight,a.scrollHeight,e,'e');
+  
+}
 
 const ChosePro=(item:any,i?:number)=>{
   Object.assign(DialogData,item)

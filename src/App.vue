@@ -2,7 +2,7 @@
 import { useStore } from 'vuex'
 const store = useStore()
 // import HelloWorld from './components/HelloWorld.vue'
-import { onMounted, ref, Ref, reactive } from 'vue'
+import { onMounted, ref, Ref, reactive,watch } from 'vue'
 import { throttle, debounce, SrcollToA, Origin } from './util/common'
 
 import Banner from './components/Banner.vue'
@@ -14,7 +14,8 @@ const BannerRef: Ref = ref(null)
 const HomeRef: Ref = ref(null)
 const AboutRef: Ref = ref(null)
 const ProRef: Ref = ref(null)
-const IdList = reactive(['home', 'about', 'pro'])//首页id集合 用于整屏滚动
+const LinkMeRef: Ref = ref(null)
+const IdList = reactive(['home', 'about', 'pro','linkme'])//首页id集合 用于整屏滚动
 
 const ComponHeight: number[] = reactive([0, 0, 0, 0])
 
@@ -50,10 +51,12 @@ onMounted(() => {
   ComponHeight[0] = HomeRef.value.$el.offsetTop
   ComponHeight[1] = AboutRef.value.$el.offsetTop
   ComponHeight[2] = ProRef.value.$el.offsetTop
+  ComponHeight[3] = LinkMeRef.value.$el.offsetTop
 
   window.onresize = throttle(() => {
     Origin()
     CommitHeader()
+    // SrcollToA(IdList[store.state.ScrollPage])
   }, 100)
   // 滚动时防抖 每100ms处罚一次事件 重新改变activeclass
   // window.onscroll = throttle(() => {
@@ -117,10 +120,7 @@ const ScrollPage = (e, o) => {
 
 
 }
-const test = (e) => {
-  console.log(e, 'e');
 
-}
 
 
 </script>
@@ -133,7 +133,7 @@ const test = (e) => {
       <Home ref="HomeRef"></Home>
       <About ref="AboutRef"></About>
       <Pro ref="ProRef"></Pro>
-      <!-- <LinkMe ref="LinkMeRef"></LinkMe> -->
+      <LinkMe ref="LinkMeRef"></LinkMe>
     </div>
 
   </div>
