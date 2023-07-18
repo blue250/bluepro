@@ -6,6 +6,7 @@ interface state{
   Origin:string,
   ScrollPage:number,
   Top:number,
+  ScreenH:number
 }
 const state:state={
   DomId:'home',
@@ -14,14 +15,18 @@ const state:state={
   Origin:'PC',
   ScrollPage:0,
   Top:0,
+  ScreenH:0,
 }
 
 const getters={
   HomeHeight(state:state){
-    return '100vh - '+state.Header+'px'
+    return `${state.ScreenH}px - ${state.Header}px`
   },
   MarginTop(state:state){
     return state.Header
+  },
+  ScreenH(state:state){
+    return {height:state.ScreenH+'px'}
   }
   // Top(){
   //   return state.Top
@@ -46,6 +51,9 @@ const mutations={
   },
   Top:(state:state,value:state['Top'])=>{
     state.Top=value
+  },
+  ScreenH:(state:state,value:state['ScreenH'])=>{
+    state.ScreenH=value
   },
 }
 export default createStore({

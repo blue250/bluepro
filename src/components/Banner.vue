@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref ,defineExpose } from 'vue'
 import { useStore } from 'vuex'
 import { SrcollToA } from '../util/common'
 const store = useStore()
@@ -31,7 +31,7 @@ const CloseMenu = () => {
   
 //   store.commit('Header', document.getElementsByClassName('Banner')[0].clientHeight)
 // })
-
+defineExpose({CloseMenu})
 </script>
 
 <template>
@@ -46,7 +46,7 @@ const CloseMenu = () => {
       <li class="pro" :class="{ active: IsActive('pro') }" @click="ClickId('pro', 2)">项目</li>
       <li class="linkme" :class="{ active: IsActive('linkme') }" @click="ClickId('linkme', 3)">找我</li>
     </ul>
-    <div class="linkSmall">
+    <div class="linkSmall" @click.stop="">
       <img src="@/assets/img/menu.png" alt="" srcset="" style="height: 100%;" @click="ShowMenu" v-show="!ShowMenuC">
       <div class="closeButton" style="height: 100%;" @click="CloseMenu" v-show="ShowMenuC"></div>
       <div style="position: absolute;top: 100%;left:0;display: block;width: 100vw;" v-show="ShowMenuC">

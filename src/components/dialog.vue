@@ -1,10 +1,10 @@
 <template>
-  <div style="height: 100vh;width: 100vw;" class="dialog" v-show="props.show">
+  <div style="width: 100vw;" class="dialog" v-show="props.show"  :style="store.getters.ScreenH">
     <div class="dialogBox">
       <div style="display: flex;justify-content: flex-end;margin-right: 20px;">
         <div class="closeButton" @click="close"></div>
       </div>
-      <div style="height: calc(100% - 62px);overflow: auto;" class="box">
+      <div style="height: calc(100% - 62px);overflow: auto;" class="box" @wheel.stop="" @touchend.stop="">
         <slot></slot>
       </div>
 
@@ -15,7 +15,8 @@
 <script lang="ts" setup>
 // import { defineProps } from 'vue';
 
-
+import {useStore} from 'vuex'
+const store= useStore()
 const emit = defineEmits(['close'])
 const props = defineProps({
   show: {

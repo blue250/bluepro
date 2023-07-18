@@ -37,6 +37,7 @@ const ComponHeight: number[] = reactive([0, 0, 0, 0])
 
 const CommitHeader = () => {
   store.commit('Header', BannerRef.value.$el.clientHeight)
+  store.commit('ScreenH',document.documentElement.clientHeight)
 }
 
 // const ReSetActive = (scrollTop: number) => {
@@ -138,8 +139,8 @@ const ScrollPage = (e:any, o:string) => {
 
 
 }
-const test=()=>{
-  console.log(1,'1');
+const BodyClick=()=>{
+  console.log(BannerRef.value.CloseMenu(),'bclick');
   
 }
 
@@ -147,8 +148,8 @@ const test=()=>{
 </script>
 
 <template>
-  <div style="height: 100vh;overflow: hidden;position: relative;" class="app">
-    <div @wheel="ScrollPage($event, 'PC')" @touchend="ScrollPage($event, 'PE')" @touchstart.stop="ScrollPage($event, 'PE')" @mouseover="test"
+  <div style="overflow: hidden;position: relative;" class="app" :style="store.getters.ScreenH">
+    <div @click="BodyClick" @wheel="ScrollPage($event, 'PC')" @touchend="ScrollPage($event, 'PE')" @touchstart.stop="ScrollPage($event, 'PE')"
       style="position: absolute;transition: all .3s ease-in-out;" :style="{ top: -store.state.Top + 'px' }">
       <Banner ref="BannerRef" @wheel.stop="" @touchmove.stop=""></Banner>
       <Home ref="HomeRef"></Home>
@@ -156,8 +157,9 @@ const test=()=>{
       <Pro ref="ProRef"></Pro>
       <LinkMe ref="LinkMeRef"></LinkMe>
     </div>
-    <div style="height: 100vh;width: 100%;" class="loading" v-show="loading">
+    <div style="width: 100%;" class="loading" v-show="loading" :style="store.getters.ScreenH">
       <div>
+        <img src="@/assets/ico.png" alt="" srcset="">
         Loading...{{ em[emV] }}
         <div style="font-size: 20px;">因为没钱💴买好的服务器，所以很卡😥</div>
       </div>

@@ -55,7 +55,7 @@ let DialogShow=ref(false)
 
 const test=(e:any)=>{
   let a= document.getElementsByClassName('pro2')[0]
-  if(a.scrollTop+a.clientHeight==a.scrollHeight||(a.scrollTop==0)){
+  if(a.scrollTop+a.clientHeight>=a.scrollHeight||(a.scrollTop==0)){
     e.cancelBubble=false
   }else{
     e.cancelBubble=true
