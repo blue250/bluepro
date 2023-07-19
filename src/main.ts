@@ -8,7 +8,16 @@ app.directive('lazy',{
     
     window.addEventListener('load',()=>{
       // console.log(el.firstChild,binding,vnode,'111');
-      el.firstChild.src=binding.value
+      // if(el.firstChild.)
+
+      if(el.firstChild.tagName=='IMG'){
+        el.firstChild.src=binding.value
+      }else{
+        console.log(binding.value,'binding.value');
+        
+        el.style.backgroundImage=`url(${binding.value})`
+        console.log(el,el.style);
+      }
     })
     el.addEventListener('load',()=>{
       el.firstChild.alt='加载中'

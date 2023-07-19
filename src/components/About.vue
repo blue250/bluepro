@@ -1,7 +1,7 @@
 <template>
-  <div class="About" id="about" :style="{'height':'calc('+store.getters.HomeHeight+')'}" @click="test">
+  <div class="About" id="about" :style="{'height':'calc('+store.getters.HomeHeight+')'}" v-lazy="bg1">
     <div style="text-align: center;margin: 0 auto 0;overflow: hidden;" class="AboutImg">
-      <img src="@/assets/img/dog.jpg" alt="" srcset="" style="width: 100%">
+      <img v-lazy="img1" alt="" srcset="" style="width: 100%">
     </div>
     <div style="text-align: center;">
       <div class="h1">关于 blue250</div>
@@ -14,7 +14,7 @@
         页面使用 
         <span style="color: red;" class="KeepWord">vue3、vite、ts</span>
          所写💻。技术点:<br/>
-        <span style="color: red;" class="KeepWord">自定义指令v-lazy</span>、
+        <span style="color: red;" class="KeepWord">自定义指令v-lazy</span>，优化页面进入速度、
          <span style="color: red;" class="KeepWord">移动端适配</span>、
          <span style="color: red;" class="KeepWord">整屏滑动</span>。
 
@@ -29,12 +29,14 @@
 <script lang="ts" setup>
   import {useStore} from 'vuex'
   const store=useStore()
+  const bg1=new URL('@/assets/img/background.jpg', import.meta.url).href
+  const img1=new URL('@/assets/img/dog.jpg', import.meta.url).href
 </script>
 
 <style lang="less">
   .About{
     justify-content: center;
-    background-image: url('@/assets/img/background.jpg');
+    // background-image: url('@/assets/img/background.jpg');
     background-size: 170%;
     background-position: center;
     .h1{

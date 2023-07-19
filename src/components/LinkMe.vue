@@ -1,5 +1,5 @@
 <template>
-  <div id="linkme" :style="backgroundPosition()">
+  <div id="linkme" :style="backgroundPosition()" v-lazy="bgList[0]">
     <div>
       <h1 style="font-size: 50px;">想联系我？</h1>
       <h1 v-show="store.state.Origin == 'PC'" style="font-size: 50px;">按住Ctrl将会在新页面打开</h1>
@@ -8,8 +8,8 @@
     </div>
     <div>
       <div class="LinkIcon">
-        <a href="mailto:885054824@qq.com"><img src="@/assets/img/qq.svg" alt="" srcset=""></a>
-        <a href="https://github.com/blue250"><img src="@/assets/img/github.svg" alt="" srcset=""></a>
+        <a href="mailto:885054824@qq.com"><img v-lazy="imgList[0]" alt="" srcset=""></a>
+        <a href="https://github.com/blue250"><img v-lazy="imgList[1]" alt="" srcset=""></a>
       </div>
       <div style="display: flex;
     justify-content: center;
@@ -29,11 +29,17 @@
     <!-- <div style="height: 100%;position: relative;">
       <video src="video/findmeleg.mp4" autoplay muted loop class="video"></video>
     </div> -->
+    <div class="Beian">
+      <div>备案号：正在备案中</div>
+      <!-- <div>blue250</div> -->
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import {  reactive,ref } from 'vue'
+const imgList=[new URL('@/assets/img/qq.svg', import.meta.url).href,new URL('@/assets/img/github.svg', import.meta.url).href]
+const bgList=[new URL('@/assets/img/repeatsm.jpg', import.meta.url).href,new URL('@/assets/img/github.svg', import.meta.url).href]
+import { reactive, ref } from 'vue'
 import { useStore } from 'vuex';
 const store = useStore()
 let xy = reactive([300, 600])
@@ -41,13 +47,12 @@ const backgroundPosition = () => {
   let a = { backgroundPosition: `${xy[0]}px ${xy[1]}px`, 'height': 'calc(' + store.getters.HomeHeight + ')' }
   return a
 }
-const qrcode=ref(new URL('@/assets/img/qrcode.png', import.meta.url).href)
+const qrcode = ref(new URL('@/assets/img/qrcode.png', import.meta.url).href)
 </script>
 
 <style lang="less">
 #linkme {
   padding: 0 20px;
-  background: url('@/assets/img/repeatsm.jpg');
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
@@ -85,6 +90,23 @@ const qrcode=ref(new URL('@/assets/img/qrcode.png', import.meta.url).href)
     }
   }
 
+  .Beian {
+    // display: flex;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    background:rgba(#ffd,0.5) ;
+    -webkit-text-fill-color: black;
+    // width: 80%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    div{
+      // width: 50%;
+    }
+  }
+
   @media screen and (max-width:992px) {
     h1 {
       font-size: 28px !important;
@@ -108,5 +130,4 @@ const qrcode=ref(new URL('@/assets/img/qrcode.png', import.meta.url).href)
 //     object-position: top center;
 //     z-index: 1;
 //   }
-// }
-</style>
+// }</style>
