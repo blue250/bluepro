@@ -10,20 +10,10 @@ import Home from './components/Home.vue'
 import About from './components/About.vue'
 import Pro from './components/Pro.vue'
 import LinkMe from './components/LinkMe.vue'
-const em=reactive(['💦','💤','💥','🕑','🤴'])
-const emV=ref(0)
-let emtimer:NodeJS.Timer;
+import Loading from './components/Loading.vue'
 Origin()
-const ran=()=>{
-  emtimer=setInterval(()=>{
-    emV.value=Math.floor(Math.random()*5)
-  },300)
-}
-ran()
 let loading=ref(true)
 window.onload=()=>{
-  clearInterval(emtimer)
-  // console.log(111);
   loading.value=false
 }
 const BannerRef: Ref = ref(null)
@@ -101,16 +91,13 @@ const PcScroll = (e:any) => {
   }
 
   ScrollCount.value += e.wheelDeltaY
-  console.log(e.wheelDeltaY, ScrollCount.value);
 }//pc与移动端滑动函数
 const PeScroll = (e:any) => {
-  console.log(1,'1');
   
   e.type == 'touchstart' && (Start.value = e.changedTouches[0].screenY)
   e.type == 'touchend' && (End.value = e.changedTouches[0].screenY)
   // 移动端
   if (e.type == 'touchend') {
-    console.log(Start.value, End.value, 'e');
     if (Start.value - End.value > 40 && store.state.ScrollPage < IdList.length - 1) {
       store.commit('ScrollPage', store.state.ScrollPage + 1)
       SrcollToA(IdList[store.state.ScrollPage])
@@ -124,8 +111,6 @@ const PeScroll = (e:any) => {
 }
 // 整屏滚动代码
 const ScrollPage = (e:any, o:string) => {
-  console.log(store.state.Origin,o,'o');
-  
   if (!store.state.FrezzActive) {
     if (store.state.Origin == 'PC' && e.type == 'wheel' && o == 'PC') {
       PcScroll(e)
@@ -134,13 +119,12 @@ const ScrollPage = (e:any, o:string) => {
       PeScroll(e)
     }
   }
-  // console.log(e,'e');
 
 
 
 }
 const BodyClick=()=>{
-  console.log(BannerRef.value.CloseMenu(),'bclick');
+  BannerRef.value.CloseMenu();
   
 }
 
@@ -157,11 +141,12 @@ const BodyClick=()=>{
       <Pro ref="ProRef"></Pro>
       <LinkMe ref="LinkMeRef"></LinkMe>
     </div>
-    <div style="width: 100%;" class="loading" v-show="loading" :style="store.getters.ScreenH">
-      <div>
-        <img src="@/assets/ico.png" alt="" srcset="">
-        Loading...{{ em[emV] }}
-        <div style="font-size: 20px;">因为没钱💴买好的服务器，所以很卡😥</div>
+    <div style="width: 100%;" class="loading" v-if="loading" :style="store.getters.ScreenH">
+      <Loading></Loading>
+      <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);">
+        <div>
+          <img src="@/assets/ico.png" alt="" srcset="" class="cirl">
+        </div>
       </div>
     </div>
   </div>
@@ -177,10 +162,18 @@ const BodyClick=()=>{
   z-index: 3;
   background: #fffff1;
   position: absolute;
-  font-size: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @keyframes cirla {
+    0%{transform: rotateZ(0deg);}
+    100%{
+      transform: rotateZ(-360deg);
+    }
+  }
+  .cirl{
+    position: relative;
+    animation: cirla 2s linear forwards;
+    animation-iteration-count: infinite;
+  }
+
   // font-size: 60px;
   // background: repeating-linear-gradient(rgb(39, 181, 252),rgb(203, 252, 27));
   // -webkit-background-clip: text;

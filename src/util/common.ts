@@ -1,11 +1,9 @@
 import store from "../store"
 
-console.log(store.state, "1")
 
 export const debounce = (fn: any, wait = 500, isImmediate = false) => {
   var timerId: any = null
   var flag = true
-  console.log("this")
   return function (this: any) {
     var context = this
     var args = arguments
@@ -97,5 +95,4 @@ export const Origin = () => {
   }
 
   store.commit("Origin", origin)
-  console.log(store.state.Origin)
 }

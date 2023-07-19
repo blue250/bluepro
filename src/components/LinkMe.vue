@@ -3,7 +3,7 @@
     <div>
       <h1 style="font-size: 50px;">想联系我？</h1>
       <h1 v-show="store.state.Origin == 'PC'" style="font-size: 50px;">按住Ctrl将会在新页面打开</h1>
-      <h2>点击下方图标</h2>
+      <!-- <h2>点击下方图标</h2> -->
       <!-- <h1 v-show="store.state.Origin=='PE'" style="font-size: 60px;">点击</h1> -->
     </div>
     <div>
@@ -11,7 +11,9 @@
         <a href="mailto:885054824@qq.com"><img src="@/assets/img/qq.svg" alt="" srcset=""></a>
         <a href="https://github.com/blue250"><img src="@/assets/img/github.svg" alt="" srcset=""></a>
       </div>
-      <div style="display: flex;">
+      <div style="display: flex;
+    justify-content: center;
+      ">
         <div style="text-align: center;">
           <h1 class="WhiteB">或扫描微信二维码</h1>
           <h3>请备注来意</h3>
@@ -41,47 +43,17 @@ const backgroundPosition = () => {
 }
 onMounted(() => {
 
-  // setInterval(() => {
-  //   console.log(1,'1');
-    
-  //   let timer1;
-  //   let timer2;
-  //   clearInterval(timer2)
-  //   clearInterval(timer1)
-  //   if (xy[0] >= 400) {
-  //     clearInterval(timer2)
-  //     timer1 = setInterval(() => {
-  //       xy[0] -= 10
-  //       xy[1] -= 10
-  //       console.log(xy[0], 'xy');
-  //     },100)
-  //     return
-  //   }
-  //   if (xy[0] <= 100) {
-  //     clearInterval(timer1)
-  //     timer2 = setInterval(() => {
-  //       xy[0] += 10
-  //       xy[1] += 10
-  //       console.log(xy[0], 'xy');
-  //     },100)
-  //     return
-  //   }
-
-  //   // document.getElementById('linkme').style.backgroundPosition=`${xy[0]}px ${xy[1]}px`
-  // }, 1000)
-  // console.log(, '11');
-
 })
 </script>
 
 <style lang="less">
 #linkme {
   padding: 0 20px;
-  background: url('@/assets/img/repeat.jpg');
+  background: url('@/assets/img/repeat.png');
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
-  // text-align: center;
+  text-align: center;
   overflow: hidden;
   transition: all 0.3s;
   // background-position: 50% 50%;
@@ -103,6 +75,7 @@ onMounted(() => {
 
   .LinkIcon {
     display: flex;
+    justify-content: center;
 
     a {
       width: 48px;

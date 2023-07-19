@@ -53,14 +53,22 @@ let DialogData=reactive({img:'',title:'',info:'',tag:'',tags:[],detail:{info:'',
 
 let DialogShow=ref(false)
 
+let TopCount=ref(0)
+
 const test=(e:any)=>{
   let a= document.getElementsByClassName('pro2')[0]
   if(a.scrollTop+a.clientHeight>=a.scrollHeight||(a.scrollTop==0)){
-    e.cancelBubble=false
+    TopCount.value++
+    // 防止页面内有滚动条 滑一下整个页面划走  滑第三次时才允许整个页面滑动
+    if(TopCount.value>1){
+      TopCount.value=0
+    }else{
+      e.stopPropagation()
+    }
   }else{
-    e.cancelBubble=true
+    console.log('in');
+      e.stopPropagation()
   }
-  console.log(a.scrollTop,a.clientHeight,a.scrollHeight,e,'e');
   
 }
 
