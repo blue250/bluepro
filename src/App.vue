@@ -118,6 +118,7 @@ const ScrollPage = (e:any, o:string) => {
     if (store.state.Origin == 'PE' && o == 'PE') {
       PeScroll(e)
     }
+    // e.target=IdList[store.state.ScrollPage]
   }
 
 
@@ -134,7 +135,7 @@ const BodyClick=()=>{
 <template>
   <div style="overflow: hidden;position: relative;" class="app" :style="store.getters.ScreenH">
     <div @click="BodyClick" @wheel="ScrollPage($event, 'PC')" @touchend="ScrollPage($event, 'PE')" @touchstart.stop="ScrollPage($event, 'PE')"
-      style="position: absolute;transition: all .3s ease-in-out;" :style="{ top: -store.state.Top + 'px' }">
+      style="position: absolute;" :style="{ top: -store.state.Top + 'px' }">
       <Banner ref="BannerRef" @wheel.stop="" @touchmove.stop=""></Banner>
       <Home ref="HomeRef"></Home>
       <About ref="AboutRef"></About>

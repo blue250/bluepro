@@ -43,7 +43,10 @@ const Stop=(timer:NodeJS.Timer,top:number,height:number)=>{
   clearInterval(timer)
   top = height
   store.commit("Top", top)
-  store.commit("FrezzActive", false)
+  setTimeout(()=>{
+    store.commit("FrezzActive", false)
+  },300)
+  
 }
 export const SrcollToA = (a) => {
   store.commit("FrezzActive", true)

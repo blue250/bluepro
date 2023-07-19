@@ -2,17 +2,26 @@
 <script lang="ts" setup>
 import JsonImg from './JsonImg.vue'
 import HomeText from './HomeText.vue'
+import {ref} from 'vue'
   import {useStore} from 'vuex'
   const store=useStore()
-  const pat=new URL('@/assets/lottie/markus2.json',import.meta.url).href
-
-
+  const pat= new URL('@/assets/lottie/markus2.json',import.meta.url).href
+  let LottieOk=ref(false)
+  const LottieEnd=(e)=>{
+    LottieOk.value=e
+  }
+  const load=ref(true)
+  window.addEventListener('load',()=>{
+    load.value=false
+  })
 </script>
-
 <template>
   <div class="Home" id="home" :style="{'height':'calc('+store.getters.HomeHeight+')',marginTop:store.getters.MarginTop+'px'}">
     <HomeText class="HomeText"></HomeText>
-    <JsonImg :path="pat" class="JsonImg"></JsonImg>
+    <JsonImg :path="pat" class="JsonImg" @End="LottieEnd" v-show="LottieOk" v-if="!load"></JsonImg>
+    <div class="JsonImg" v-show="!LottieOk">
+      <img src="@/assets/img/home.png" style="width: 100%;">
+    </div>
     <div class="container">
     <div class="chevron"></div>
     <div class="chevron"></div>

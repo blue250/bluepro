@@ -17,8 +17,8 @@
         <div style="text-align: center;">
           <h1 class="WhiteB">或扫描微信二维码</h1>
           <h3>请备注来意</h3>
-          <div>
-            <img src="@/assets/img/qrcode.png" style="width: 300px;" alt="" srcset="">
+          <div v-lazy="qrcode">
+            <img src="" style="width: 300px;" alt="" srcset="">
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, reactive } from 'vue'
+import {  reactive,ref } from 'vue'
 import { useStore } from 'vuex';
 const store = useStore()
 let xy = reactive([300, 600])
@@ -41,15 +41,13 @@ const backgroundPosition = () => {
   let a = { backgroundPosition: `${xy[0]}px ${xy[1]}px`, 'height': 'calc(' + store.getters.HomeHeight + ')' }
   return a
 }
-onMounted(() => {
-
-})
+const qrcode=ref(new URL('@/assets/img/qrcode.png', import.meta.url).href)
 </script>
 
 <style lang="less">
 #linkme {
   padding: 0 20px;
-  background: url('@/assets/img/repeat.png');
+  background: url('@/assets/img/repeatsm.jpg');
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;

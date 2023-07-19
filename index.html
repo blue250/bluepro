@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/src/assets/ico.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,maximum-scale=1.0"
+    />
     <title>Blue250</title>
   </head>
   <body>
@@ -12,5 +15,14 @@
   </body>
 </html>
 <script>
-
+  document.body.addEventListener(
+    "touchmove",
+    function (e) {
+      // console.log(e,'e');
+      if(e.tip!=='allow'){
+        e.preventDefault()
+      }
+    },
+    { passive: false }
+  )
 </script>

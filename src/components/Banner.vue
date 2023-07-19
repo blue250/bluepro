@@ -26,11 +26,6 @@ const ShowMenu = () => {
 const CloseMenu = () => {
   ShowMenuC.value = false
 }
-// onMounted(()=>{
-//   console.log(document.getElementsByClassName('Banner')[0].clientHeight,'111');
-  
-//   store.commit('Header', document.getElementsByClassName('Banner')[0].clientHeight)
-// })
 defineExpose({CloseMenu})
 </script>
 
