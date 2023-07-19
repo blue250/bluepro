@@ -1,7 +1,7 @@
 <template>
   <div class="About" id="about" :style="{'height':'calc('+store.getters.HomeHeight+')'}" v-lazy="bg1">
-    <div style="text-align: center;margin: 0 auto 0;overflow: hidden;" class="AboutImg">
-      <img v-lazy="img1" alt="" srcset="" style="width: 100%">
+    <div style="text-align: center;margin: 0 auto 0;overflow: hidden;" class="AboutImg" v-lazy="img1">
+      <img src="" alt="" srcset="" style="width: 100%">
     </div>
     <div style="text-align: center;">
       <div class="h1">关于 blue250</div>

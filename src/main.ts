@@ -7,16 +7,11 @@ app.directive('lazy',{
   mounted(el,binding){
     
     window.addEventListener('load',()=>{
-      // console.log(el.firstChild,binding,vnode,'111');
-      // if(el.firstChild.)
-
-      if(el.firstChild.tagName=='IMG'){
+      
+      if(el.firstChild&&el.firstChild.tagName=='IMG'){
         el.firstChild.src=binding.value
       }else{
-        console.log(binding.value,'binding.value');
-        
         el.style.backgroundImage=`url(${binding.value})`
-        console.log(el,el.style);
       }
     })
     el.addEventListener('load',()=>{
